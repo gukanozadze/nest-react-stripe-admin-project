@@ -2,17 +2,24 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
 import axios from 'axios'
 import reportWebVitals from './reportWebVitals'
 import App from './App'
+import { rootReducer } from './redux/rootReducer'
 
 axios.defaults.baseURL = 'http://localhost:8000/api/admin'
 axios.defaults.withCredentials = true
 
+const store = createStore(rootReducer)
+
 ReactDOM.render(
 	<React.StrictMode>
 		<BrowserRouter>
-			<App />
+			<Provider store={store}>
+				<App />
+			</Provider>
 		</BrowserRouter>
 	</React.StrictMode>,
 	document.getElementById('root')

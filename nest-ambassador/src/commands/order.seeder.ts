@@ -25,7 +25,7 @@ import { OrderItemService } from '../order/order-item.service';
             complete: true,
         });
 
-        // each order will have random of 1-5 order item
+        // each order will have 1-5 random order item
         for (let j = 0; j < randomInt(1, 5); j++) {
             await orderItemService.save({
                 order: order,

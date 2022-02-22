@@ -1,14 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import axios from 'axios'
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { User } from '../models/user'
+import { RootState } from '../redux/rootReducer'
 
-interface Props {
-	user: User
-}
+const Nav = () => {
+	const { user } = useSelector((state: RootState) => state.user)
 
-const Nav = ({ user }: Props) => {
 	const logout = async () => {
 		await axios.get('/logout')
 	}
